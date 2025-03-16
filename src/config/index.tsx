@@ -70,9 +70,9 @@ export type Config = {
 
 // Configuration
 export const config: Config = {
-  name: "Steve",
+  name: "Neel",
   hero: {
-    title: "Hi, I'm Steve Jobs",
+    title: "Hi, I'm Neel",
     subtitle: "I build things that are insanely great",
     backgroundImage: "/hero.png",
   },
