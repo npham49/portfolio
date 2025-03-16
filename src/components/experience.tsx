@@ -7,7 +7,7 @@ export const Experience = () => {
     const workExperience = config.projects.filter(project => !project.isPersonalProject);
 
     return (
-        <div className="py-16 px-4 w-full">
+        <div className="py-16 px-4 w-full" id="experience">
             <HeaderTitle className="mb-8 text-center">Experience</HeaderTitle>
             <div className="relative flex  flex-col items-center justify-center overflow-hidden">
                 <Marquee className="py-4" pauseOnHover>

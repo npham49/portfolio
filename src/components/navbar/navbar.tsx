@@ -4,12 +4,13 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "@/providers/theme-context";
 
 import { motion, useAnimate } from "framer-motion";
-import { MoonIcon, PhoneIcon, SunIcon } from "lucide-react";
+import { MailIcon, MoonIcon, SunIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { links } from "./links";
 import { config } from "@/config";
+import { getContactLink } from "../util/get-contact-link";
 
 export default function Navbar() {
   const [isCompressed, setIsCompressed] = useState(false);
@@ -191,12 +192,16 @@ export default function Navbar() {
           className={cn("flex justify-end items-center gap-4")}
           id="right-section"
         >
-          <PhoneIcon
+          <MailIcon
             className={cn(
               "size-4 inline ",
               !isCompressed && "",
               isCompressed && "text-white"
             )}
+            onClick={() => {
+              const link = getContactLink();
+              window.open(link, "_blank");
+            }}
           />
           {!isCompressed && (
             <div className="flex justify-center items-center w-fit">

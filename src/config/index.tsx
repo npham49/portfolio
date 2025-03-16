@@ -50,6 +50,13 @@ export interface Education {
   }[];
 }
 
+
+export interface Contact {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  buttonLink: string;
+} 
 export interface Testimonial {
   name: string;
   image: string;
@@ -66,6 +73,7 @@ export interface Skills {
 
 export type Config = {
   name: string;
+  contactEmail: string;
   hero: {
     title: string;
     subtitle: string;
@@ -88,6 +96,7 @@ export type Config = {
     title: string;
     subtitle: string;
   };
+  contact: Contact;
 };
 
 
@@ -96,6 +105,7 @@ export type Config = {
 // Configuration
 export const config: Config = {
   name: "Neel",
+  contactEmail: "neel@neel.com",
   hero: {
     title: "Hi, I'm Neel",
     subtitle: "I build things that are insanely great",
@@ -368,6 +378,12 @@ export const config: Config = {
     ],
     title: "Kind Words",
     subtitle: "This is what the peeps say about me"
+  },
+  contact: {
+    title: "Let's Connect",
+    subtitle: "I'm always looking for new challenges and opportunities to grow. Let's connect and see how we can make something great together.",
+    buttonText: "Contact Me",
+    buttonLink: "mailto:neel@neel.com"
   }
 
 };

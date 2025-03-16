@@ -5,7 +5,7 @@ import HeaderTitle from './util/header-title'
 
 export default function Skills() {
     return (
-        <section className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent w-full">
+        <section className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent w-full" id="skills">
             <div className=" mx-auto max-w-5xl px-6">
                 <div className="text-center">
                     <HeaderTitle className=" ">{config.skills.title}</HeaderTitle>
