@@ -62,7 +62,11 @@ export type Config = {
   social: SocialLinks;
   projects: Project[];
   education: Education[];
-  skills: Skills[];
+  skills: {
+    items: Skills[];
+    title: ReactNode;
+    description: ReactNode;
+  };
 };
 
 
@@ -247,11 +251,12 @@ export const config: Config = {
       logo: "https://images.unsplash.com/photo-1618790067848-8d6401a38bf5?ixlib=rb-4.0.3"
     }
   ],
-  skills: [
-    {
-      title: "Full Stack Development",
-      description: "Proficient in both frontend and backend development",
-      icon: <Laptop />
+  skills: {
+    items: [
+      {
+        title: "Full Stack Development",
+        description: "Proficient in both frontend and backend development",
+        icon: <Laptop />
     },
     {
       title: "Frontend Engineering", 
@@ -264,4 +269,7 @@ export const config: Config = {
       icon: <Database />
     }, 
   ],
+    title:<>What I bring <br className=" sm:hidden"/> to the table</>,
+    description: "Proficient in both frontend and backend development",
+  },
 };
