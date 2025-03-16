@@ -2,6 +2,7 @@ import GoBackUp from "@/components/util/go-back-up";
 import { ThemeProvider } from "@/providers/theme-context";
 import ReactLenis from "lenis/react";
 import type { Metadata } from "next";
+import { ScrollToHash } from "@/components/scroll-to-hash";
 
 import localFont from "next/font/local";
 import "./globals.css";
@@ -45,6 +46,7 @@ export default function RootLayout({
           >
             <Navbar />
             <MobileNavbar />
+            <ScrollToHash />
             {children}
             <GoBackUp />
           </body>

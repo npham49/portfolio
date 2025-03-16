@@ -7,6 +7,8 @@ import { useTheme } from "@/providers/theme-context";
 import { motion } from "framer-motion";
 import { Menu, Moon, Phone, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { links } from "./links";
+
 export default function MobileNavbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -67,64 +69,21 @@ export default function MobileNavbar() {
                       "flex flex-col gap-8 text-xl text-muted-foreground font-bold"
                     )}
                   >
-                    <li>
-                      <span
-                        onClick={(e) => {
-                          handleLinkClick(e, () => {
-                            window.location.href = "/";
-                          });
-                        }}
-                      >
-                        {"Home"}
-                      </span>
-                    </li>
-                    <li>
-                      <span
-                        onClick={(e) => {
-                          handleLinkClick(e, () => {
-                            window.location.href = "/projects";
-                          });
-                        }}
-                      >
-                        {"Projects"}
-                      </span>
-                    </li>
-                    <li>
-                      <span
-                        className="cursor-pointer"
-                        onClick={(e) => {
-                          // if we are on /, scroll to #testimonials
-                          handleLinkClick(e, () => {
-                            if (window.location.pathname === "/") {
-                              document
-                                .getElementById("testimonials")
-                                ?.scrollIntoView({
-                                  behavior: "smooth",
-                                  block: "start",
-                                });
-                            } else {
-                              // go to /?section=testimonials
-                              window.location.href = "/?section=testimonials";
-                            }
-                          });
-                        }}
-                      >
-                        {"Testimonials"}
-                      </span>
-                    </li>
-
-                    <li>
-                      <span
-                        className="cursor-pointer"
-                        onClick={(e) =>
-                          handleLinkClick(e, () => {
-                            window.location.href = "/simple";
-                          })
-                        }
-                      >
-                        Simple Version
-                      </span>
-                    </li>
+                    {links.map((link) => (
+                      <li key={link.href}>
+                        <span
+                          className="cursor-pointer flex items-center gap-2"
+                          onClick={(e) =>
+                            handleLinkClick(e, () => {
+                              window.location.href = link.href;
+                            })
+                          }
+                        >
+                          {link.icon}
+                          {link.name}
+                        </span>
+                      </li>
+                    ))}
                   </motion.ul>
                 </div>
 
