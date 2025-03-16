@@ -5,18 +5,20 @@ import type { Metadata } from "next";
 import { ScrollToHash } from "@/components/scroll-to-hash";
 
 import localFont from "next/font/local";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/navbar/navbar";
 import MobileNavbar from "@/components/navbar/mobile-navbar";
 import Footer from "@/components/footer";
+
+
 import { config } from "@/config";
 const geistSans = localFont({
-  src: "fonts/GeistVF.woff",
+  src: "../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "fonts/GeistMonoVF.woff",
+  src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
