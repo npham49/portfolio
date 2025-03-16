@@ -1,6 +1,6 @@
 // Types
 import { ReactNode } from "react";
-
+import { Laptop, Monitor, Database } from "lucide-react";
 export type SocialLink = {
   url: string;
   ariaLabel: string;
@@ -36,6 +36,22 @@ export interface Project {
   isPersonalProject?: boolean;
 }
 
+export interface Education {
+  school: string;
+  degree: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  logo: string;
+}
+
+export interface Skills {
+  title: string;
+  description: string;
+  icon: ReactNode;
+}
+
+
 export type Config = {
   name: string;
   hero: {
@@ -45,7 +61,12 @@ export type Config = {
   };
   social: SocialLinks;
   projects: Project[];
+  education: Education[];
+  skills: Skills[];
 };
+
+
+
 
 // Configuration
 export const config: Config = {
@@ -53,7 +74,7 @@ export const config: Config = {
   hero: {
     title: "Hi, I'm Steve Jobs",
     subtitle: "I build things that are insanely great",
-    backgroundImage: "https://images.unsplash.com/photo-1492011221367-f47e3ccd77a0?ixlib=rb-4.0.3",
+    backgroundImage: "/hero.png",
   },
   social: {
     github: {
@@ -207,5 +228,40 @@ export const config: Config = {
       endDate: "1972",
       isPersonalProject: true
     }
+  ],
+  education: [
+    {
+      school: "Reed College",
+      degree: "Dropped Out",
+      startDate: "1972",
+      endDate: "1974",
+      description: "Studied calligraphy and eastern philosophy before dropping out. Later credited this experience with inspiring Apple's typography.",
+      logo: "https://images.unsplash.com/photo-1618790067848-8d6401a38bf5?ixlib=rb-4.0.3"
+    }, 
+    {
+      school: "Stanford University",
+      degree: "Dropped Out",
+      startDate: "1972",
+      endDate: "1974",
+      description: "Studied calligraphy and eastern philosophy before dropping out. Later credited this experience with inspiring Apple's typography.",
+      logo: "https://images.unsplash.com/photo-1618790067848-8d6401a38bf5?ixlib=rb-4.0.3"
+    }
+  ],
+  skills: [
+    {
+      title: "Full Stack Development",
+      description: "Proficient in both frontend and backend development",
+      icon: <Laptop />
+    },
+    {
+      title: "Frontend Engineering", 
+      description: "Expertise in building user-friendly interfaces",
+      icon: <Monitor />
+    },
+    {
+      title: "Backend Architecture",
+      description: "Strong foundation in server-side development and system design", 
+      icon: <Database />
+    }, 
   ],
 };
