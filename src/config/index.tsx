@@ -50,6 +50,13 @@ export interface Education {
   }[];
 }
 
+export interface Testimonial {
+  name: string;
+  image: string;
+  quote: string;
+  company?: string;
+}
+
 export interface Skills {
   title: string;
   description: string;
@@ -75,6 +82,11 @@ export type Config = {
     items: Skills[];
     title: ReactNode;
     description: ReactNode;
+  };
+  testimonials: {
+    items: Testimonial[];
+    title: string;
+    subtitle: string;
   };
 };
 
@@ -319,4 +331,43 @@ export const config: Config = {
     title:<>What I bring <br className=" sm:hidden"/> to the table</>,
     description: "Proficient in both frontend and backend development",
   },
+
+  testimonials: {
+    items: [
+      {
+        name: "Tim Cook",
+        image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3",
+        quote: "His attention to detail and innovative thinking transformed our entire approach to product design. The results speak for themselves.", 
+        company: "Apple Inc."
+      },
+      {
+        name: "Bill Gates",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3",
+        quote: "Even though we were competitors, I always admired his vision and dedication to creating insanely great products that changed the world.",
+        company: "Microsoft"
+      },
+      {
+        name: "Jony Ive",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3",
+        quote: "Working together, we pushed the boundaries of what was possible in industrial design. His perfectionism was infectious.",
+        company: "LoveFrom"
+      },
+      {
+        name: "Larry Ellison",
+        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3",
+        quote: "A true visionary who saw possibilities where others saw limitations. His influence on Silicon Valley cannot be overstated.",
+        company: "Oracle"
+      },
+      {
+        name: "Wozniak",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3",
+        quote: "We started in a garage and ended up changing the world. His marketing genius and my technical skills were the perfect combination.",
+        company: "Apple Co-founder"
+      },
+     
+    ],
+    title: "Kind Words",
+    subtitle: "This is what the peeps say about me"
+  }
+
 };
