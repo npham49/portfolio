@@ -3,7 +3,6 @@ import {
   BriefcaseIcon,
   GraduationCapIcon,
   MessageSquareIcon,
-  PhoneIcon,
 } from "lucide-react";
 
 interface Link {
