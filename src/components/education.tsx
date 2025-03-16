@@ -1,6 +1,5 @@
 "use client";
 
-import { Education as EducationType } from "@/config";
 import { GraduationCap } from "lucide-react";
 import HeaderTitle from "./util/header-title";
 import { config } from "@/config";

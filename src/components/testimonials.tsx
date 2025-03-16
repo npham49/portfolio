@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { config } from '@/config'
 import HeaderTitle from './util/header-title'
