@@ -33,9 +33,4 @@ export const links: Link[] = [
     href: "#testimonials",
     icon: <MessageSquareIcon className="size-4" />,
   },
-  {
-    name: "Contact",
-    href: "#contact",
-    icon: <PhoneIcon className="size-4" />,
-  },
 ];

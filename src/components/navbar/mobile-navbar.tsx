@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { Menu, Moon, Phone, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { links } from "./links";
-
+import { config } from "@/config";
 export default function MobileNavbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +48,9 @@ export default function MobileNavbar() {
         <div className="flex items-center gap-2">
           <motion.span className={cn(hasScrolled && "")} id="companyName">
             with{" "}
-            <motion.span className="font-bold not-italic">Neel</motion.span>
+            <motion.span className="font-bold not-italic">
+              {config.name}
+            </motion.span>
           </motion.span>
         </div>
 

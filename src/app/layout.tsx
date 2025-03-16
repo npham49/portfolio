@@ -9,6 +9,7 @@ import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 import MobileNavbar from "@/components/navbar/mobile-navbar";
 import Footer from "@/components/footer";
+import { config } from "@/config";
 const geistSans = localFont({
   src: "fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -21,7 +22,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "withNeel | Full Stack Developer & Machine Learning Engineer",
+  title: `${config.name} | Full Stack Developer & Machine Learning Engineer`,
   description:
     "I'm a full stack developer and machine learning engineer with a passion for building delightful software.",
 };

@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { links } from "./links";
+import { config } from "@/config";
 
 export default function Navbar() {
   const [isCompressed, setIsCompressed] = useState(false);
@@ -149,7 +150,7 @@ export default function Navbar() {
             {" "}
             <div
               className={cn(
-                "bg-red-950 bg-opacity-50 backdrop-blur-sm rounded-full size-[40px] flex items-center justify-center text-secondary relative overflow-clip",
+                "bg-red-900 bg-opacity-50 backdrop-blur-sm rounded-full size-[40px] flex items-center justify-center text-secondary relative overflow-clip",
                 isCompressed && "size-[30px]"
               )}
               id="companyLogo"
@@ -158,7 +159,9 @@ export default function Navbar() {
 
           <motion.span className={cn(isCompressed && "")} id="companyName">
             with{" "}
-            <motion.span className="font-bold not-italic">Neel</motion.span>
+            <motion.span className="font-bold not-italic">
+              {config.name}
+            </motion.span>
           </motion.span>
         </div>
 
@@ -199,16 +202,16 @@ export default function Navbar() {
             <div className="flex justify-center items-center w-fit">
               <div className="md:flex gap-4 hidden mr-4">
                 <Link
-                  href="https://github.com/neel738"
+                  href={config.social.github.url}
                   target="_blank"
-                  aria-label="GitHub"
+                  aria-label={config.social.github.ariaLabel}
                 >
                   <SiGithub className="hover:text-gray-400 transition-colors size-5" />
                 </Link>
                 <Link
-                  href="https://linkedin.com/in/neel-gh"
+                  href={config.social.linkedin.url}
                   target="_blank"
-                  aria-label="LinkedIn"
+                  aria-label={config.social.linkedin.ariaLabel}
                 >
                   <SiLinkedin className="hover:text-blue-400 transition-colors size-5" />
                 </Link>
