@@ -45,28 +45,6 @@ export default function MobileNavbar() {
         )}
       >
         <div className="flex items-center gap-2">
-          <Link href={"/"}>
-            {" "}
-            <div
-              className={cn(
-                "bg-red-950 bg-opacity-50 backdrop-blur-sm rounded-full size-[24px] flex items-center justify-center text-secondary relative overflow-clip",
-                hasScrolled && "size-[24px]"
-              )}
-              id="companyLogo"
-            >
-              {/* <Image
-                src={"/images/dp.png"}
-                alt="logo"
-                width={24}
-                height={24}
-                className={cn(
-                  "-bottom-3 -left-1/2 absolute translate-x-1/2",
-                  isCompressed && "-bottom-2"
-                )}
-              /> */}
-            </div>
-          </Link>
-
           <motion.span className={cn(hasScrolled && "")} id="companyName">
             with{" "}
             <motion.span className="font-bold not-italic">Neel</motion.span>
@@ -80,7 +58,7 @@ export default function MobileNavbar() {
           <Drawer direction="right" open={isOpen}>
             <DrawerContent className="z-[1000] px-8 py-4">
               <div className="top-4 right-8 absolute">
-                <X className="size-[44px]" onClick={() => setIsOpen(false)} />
+                <X className="size-[24px]" onClick={() => setIsOpen(false)} />
               </div>
               <DrawerTitle>{""}</DrawerTitle>
               <div className="top-4 inset-0">
