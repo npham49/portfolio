@@ -43,6 +43,11 @@ export interface Education {
   endDate: string;
   description: string;
   logo: string;
+  grades?: {
+    subject: string;
+    grade: string;
+    year: string;
+  }[];
 }
 
 export interface Skills {
@@ -61,7 +66,11 @@ export type Config = {
   };
   social: SocialLinks;
   projects: Project[];
-  education: Education[];
+  education: {
+    items: Education[];
+    title: string;
+    subtitle: string;
+  };
   skills: {
     items: Skills[];
     title: ReactNode;
@@ -233,24 +242,62 @@ export const config: Config = {
       isPersonalProject: true
     }
   ],
-  education: [
-    {
-      school: "Reed College",
-      degree: "Dropped Out",
-      startDate: "1972",
-      endDate: "1974",
-      description: "Studied calligraphy and eastern philosophy before dropping out. Later credited this experience with inspiring Apple's typography.",
-      logo: "https://images.unsplash.com/photo-1618790067848-8d6401a38bf5?ixlib=rb-4.0.3"
-    }, 
-    {
-      school: "Stanford University",
-      degree: "Dropped Out",
-      startDate: "1972",
-      endDate: "1974",
-      description: "Studied calligraphy and eastern philosophy before dropping out. Later credited this experience with inspiring Apple's typography.",
-      logo: "https://images.unsplash.com/photo-1618790067848-8d6401a38bf5?ixlib=rb-4.0.3"
-    }
-  ],
+  education: {
+    items: [
+      {
+        school: "Reed College",
+        degree: "Dropped Out",
+        startDate: "1972",
+        endDate: "1974",
+        description: "Studied calligraphy and eastern philosophy before dropping out. Later credited this experience with inspiring Apple's typography.",
+        logo: "https://images.unsplash.com/photo-1618790067848-8d6401a38bf5?ixlib=rb-4.0.3",
+        grades: [
+          {
+            subject: "Calligraphy",
+            grade: "A+",
+            year: "1972"
+          },
+          {
+            subject: "Eastern Philosophy",
+            grade: "A",
+            year: "1973"
+          },
+          {
+            subject: "Typography Design",
+            grade: "A+",
+            year: "1973"
+          }
+        ]
+      }, 
+      {
+        school: "Stanford University",
+        degree: "Dropped Out",
+        startDate: "1972",
+        endDate: "1974",
+        description: "Studied calligraphy and eastern philosophy before dropping out. Later credited this experience with inspiring Apple's typography.",
+        logo: "https://images.unsplash.com/photo-1618790067848-8d6401a38bf5?ixlib=rb-4.0.3",
+        grades: [
+          {
+            subject: "Computer Science",
+            grade: "A",
+            year: "1972"
+          },
+          {
+            subject: "Design Thinking",
+            grade: "A+",
+            year: "1973"
+          },
+          {
+            subject: "Innovation",
+            grade: "A+",
+            year: "1974"
+          }
+        ]
+      }
+    ],
+    title: "Education Journey",
+    subtitle: "The foundation of my knowledge and experiences"
+  },
   skills: {
     items: [
       {
