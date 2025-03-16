@@ -8,6 +8,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 import MobileNavbar from "@/components/navbar/mobile-navbar";
+import Footer from "@/components/footer";
 const geistSans = localFont({
   src: "fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -49,6 +50,7 @@ export default function RootLayout({
             <ScrollToHash />
             {children}
             <GoBackUp />
+            <Footer />
           </body>
         </ThemeProvider>
       </ReactLenis>

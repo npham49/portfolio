@@ -7,7 +7,8 @@ import { motion, useAnimate } from "framer-motion";
 import { MoonIcon, PhoneIcon, SunIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { SiGithub, SiLinkedin, SiYoutube } from "react-icons/si";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import { links } from "./links";
 
 export default function Navbar() {
   const [isCompressed, setIsCompressed] = useState(false);
@@ -16,7 +17,7 @@ export default function Navbar() {
 
   useEffect(() => {
     document.addEventListener("scroll", function () {
-      if (window.scrollY > 50 || document.location.hash) {
+      if (window.scrollY > 50) {
         setIsCompressed(true);
       } else {
         setIsCompressed(false);
@@ -176,34 +177,11 @@ export default function Navbar() {
                 : "text-foreground "
             )}
           >
-            <li className="mx-auto w-full">
-              <Link href={"/"}>{"Home"}</Link>
-            </li>
-            <li className="mx-auto w-full">
-              <Link href={"/projects"}>{"Projects"}</Link>
-            </li>
-            <li className="mx-auto w-full">
-              <span
-                className="cursor-pointer"
-                onClick={() => {
-                  // if we are on /, scroll to #testimonials
-                  if (window.location.pathname === "/") {
-                    document.getElementById("testimonials")?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  } else {
-                    // go to /?section=testimonials
-                    window.location.href = "/?section=testimonials";
-                  }
-                }}
-              >
-                {"Testimonials"}
-              </span>
-            </li>
-            <li className="mx-auto w-full">
-              <Link href={"/simple"}>{"Simple"}</Link>
-            </li>
+            {links.map((link) => (
+              <li key={link.name} className="mx-auto w-full">
+                <Link href={link.href}>{link.name}</Link>
+              </li>
+            ))}
           </motion.ul>
         </div>
         <div
@@ -233,13 +211,6 @@ export default function Navbar() {
                   aria-label="LinkedIn"
                 >
                   <SiLinkedin className="hover:text-blue-400 transition-colors size-5" />
-                </Link>
-                <Link
-                  href="https://youtube.com/@curaneel"
-                  target="_blank"
-                  aria-label="YouTube"
-                >
-                  <SiYoutube className="hover:text-red-500 transition-colors size-5" />
                 </Link>
               </div>
               <button onClick={toggleTheme}>

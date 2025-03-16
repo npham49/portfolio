@@ -14,8 +14,8 @@ interface Link {
 
 export const links: Link[] = [
   {
-    name: "Home",
-    href: "/",
+    name: "Simple",
+    href: "/simple",
     icon: <HomeIcon className="size-4" />,
   },
   {
