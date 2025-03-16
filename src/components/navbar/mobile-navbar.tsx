@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "@/providers/theme-context";
 import { motion } from "framer-motion";
 import { Menu, Moon, Phone, Sun, X } from "lucide-react";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 export default function MobileNavbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
