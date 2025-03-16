@@ -1,4 +1,5 @@
 "use client";
+import { config } from "@/config";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -12,8 +13,11 @@ export default function Home() {
           className="flex flex-col items-center justify-center h-screen"
         >
           <h1 className="text-4xl font-bold font-gilda gilda-text-bg">
-            Hello bois
+            {config.hero.title}
           </h1>
+          <h2 className="text-2xl font-bold font-gilda gilda-text-bg">
+            {config.hero.subtitle}
+          </h2>
         </motion.div>
       </div>
       <div
