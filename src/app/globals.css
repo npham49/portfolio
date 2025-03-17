@@ -6,7 +6,6 @@
 @import "tailwindcss";
 
 :root {
-
   --gildaTo: rgb(0, 0, 0);
   --gildaFrom: rgb(78, 78, 78);
   --radius: 0.625rem;
@@ -108,6 +107,9 @@
 }
 
 @theme inline {
+
+  --font-gilda: 'Gilda Display', serif;
+
 
   --radius-sm: calc(var(--radius) - 4px);
 

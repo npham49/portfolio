@@ -3,6 +3,7 @@ import {
   BriefcaseIcon,
   GraduationCapIcon,
   MessageSquareIcon,
+  WrenchIcon,
 } from "lucide-react";
 
 interface Link {
@@ -18,9 +19,14 @@ export const links: Link[] = [
     icon: <HomeIcon className="size-4" />,
   },
   {
-    name: "Skills",
+    name: "Experience",
     href: "#experience",
     icon: <BriefcaseIcon className="size-4" />,
+  },
+  {
+    name: "Skills",
+    href: "#skills",
+    icon: <WrenchIcon className="size-4" />,
   },
   {
     name: "Education",
