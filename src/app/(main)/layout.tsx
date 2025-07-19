@@ -3,7 +3,8 @@ import { ThemeProvider } from "@/providers/theme-context";
 import ReactLenis from "lenis/react";
 import type { Metadata } from "next";
 import { ScrollToHash } from "@/components/scroll-to-hash";
-
+import AnalyticsConsent from "@/components/analytics-consent";
+import AnalyticsProvider from "@/components/analytics-provider";
 import "../globals.css";
 import Navbar from "@/components/navbar/navbar";
 import MobileNavbar from "@/components/navbar/mobile-navbar";
@@ -33,13 +34,15 @@ export default function RootLayout({
     <html lang="en" className="w-screen  dark" suppressHydrationWarning>
       <ReactLenis root options={lenisOptions}>
         <ThemeProvider>
-          <body className={`antialiased relative w-full h-fit`}>
+          <body className="antialiased relative w-full h-fit">
             <Navbar />
             <MobileNavbar />
             <ScrollToHash />
             {children}
             <GoBackUp />
             <Footer />
+            <AnalyticsConsent />
+            <AnalyticsProvider />
           </body>
         </ThemeProvider>
       </ReactLenis>
