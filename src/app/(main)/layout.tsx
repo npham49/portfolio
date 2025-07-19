@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { ScrollToHash } from "@/components/scroll-to-hash";
 import AnalyticsConsent from "@/components/analytics-consent";
 import AnalyticsProvider from "@/components/analytics-provider";
+import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 import Navbar from "@/components/navbar/navbar";
 import MobileNavbar from "@/components/navbar/mobile-navbar";
@@ -41,8 +42,9 @@ export default function RootLayout({
             {children}
             <GoBackUp />
             <Footer />
-            <AnalyticsConsent />
-            <AnalyticsProvider />
+            {/* <AnalyticsConsent /> */}
+            {/* <AnalyticsProvider /> */}
+            <Analytics />
           </body>
         </ThemeProvider>
       </ReactLenis>
