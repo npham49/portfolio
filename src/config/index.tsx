@@ -26,6 +26,7 @@ export interface Contact {
 
 export type Config = {
   name: string;
+  fullName: string;
   contactEmail: string;
   hero: {
     title: string;
@@ -63,6 +64,7 @@ export type { Testimonial } from "./testimonials";
 // Configuration
 export const config: Config = {
   name: "Brian",
+  fullName: "Dinh Nguyen (Brian) Pham",
   contactEmail: "nguyenphamswork@gmail.com",
   hero: {
     title: "Hi, I'm Brian!",

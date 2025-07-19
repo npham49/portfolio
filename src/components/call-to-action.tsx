@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button";
 import { config } from "@/config";
-import { Mail, SendHorizonal } from "lucide-react";
+import { SendHorizonal } from "lucide-react";
 import { getContactLink } from "./util/get-contact-link";
+import { useState } from "react";
 
 export default function CallToAction() {
+  const [isCopied, setIsCopied] = useState(false);
   const handleSubmit = (formData: FormData) => {
     const subject = formData.get("subject");
     const message = formData.get("message");
@@ -57,6 +58,27 @@ export default function CallToAction() {
                 <span className="text-base font-medium">Send Message</span>
                 <SendHorizonal className="ml-2 size-5" strokeWidth={2} />
               </button>
+              <span className="text-sm text-gray-500 cursor-pointer">
+                Alternatively, you can email me at{" "}
+                {isCopied ? (
+                  <span className="text-sm text-gray-500">
+                    {" "}
+                    ✅ Copied to clipboard
+                  </span>
+                ) : (
+                  <span
+                    onClick={() => {
+                      navigator.clipboard.writeText(config.contactEmail);
+                      setIsCopied(true);
+                      setTimeout(() => {
+                        setIsCopied(false);
+                      }, 2000);
+                    }}
+                  >
+                    {config.contactEmail}
+                  </span>
+                )}
+              </span>
             </div>
           </form>
         </div>

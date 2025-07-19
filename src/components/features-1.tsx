@@ -14,7 +14,7 @@ export default function Skills() {
           <HeaderTitle className=" ">{config.skills.title}</HeaderTitle>
           <p className="mt-4">{config.skills.description}</p>
         </div>
-        <div className="grid max-w-full lg:grid-cols-3 mx-auto mt-8 grid  gap-6 *:text-center md:mt-16">
+        <div className="grid max-w-full lg:grid-cols-3 mx-auto mt-8 gap-6 *:text-center md:mt-16">
           {config.skills.items.map((skill, index) => (
             <Card key={index} className="group shadow-zinc-950/5">
               <CardHeader className="pb-3">

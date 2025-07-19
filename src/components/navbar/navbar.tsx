@@ -161,21 +161,12 @@ export default function Navbar() {
         <div className="flex items-center gap-4" id="left-section">
           <Link href={"/"}>
             {" "}
-            <div
-              className={cn(
-                "bg-red-900 bg-opacity-50 backdrop-blur-sm rounded-full size-[40px] flex items-center justify-center text-secondary relative overflow-clip",
-                isCompressed && "size-[30px]"
-              )}
-              id="companyLogo"
-            ></div>
-          </Link>
-
-          <motion.span className={cn(isCompressed && "")} id="companyName">
-            with{" "}
-            <motion.span className="font-bold not-italic">
-              {config.name}
+            <motion.span className={cn(isCompressed && "")} id="companyName">
+              <motion.span className="font-bold not-italic">
+                {config.fullName}
+              </motion.span>
             </motion.span>
-          </motion.span>
+          </Link>
         </div>
 
         <div
