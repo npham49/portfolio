@@ -4,29 +4,17 @@ import ReactLenis from "lenis/react";
 import type { Metadata } from "next";
 import { ScrollToHash } from "@/components/scroll-to-hash";
 
-import localFont from "next/font/local";
 import "../globals.css";
 import Navbar from "@/components/navbar/navbar";
 import MobileNavbar from "@/components/navbar/mobile-navbar";
 import Footer from "@/components/footer";
 
-
 import { config } from "@/config";
-const geistSans = localFont({
-  src: "../fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "../fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
-  title: `${config.name} | Full Stack Developer & Machine Learning Engineer`,
+  title: `${config.name} | Full Stack Developer & DevOps Engineer`,
   description:
-    "I'm a full stack developer and machine learning engineer with a passion for building delightful software.",
+    "I'm a full stack developer and devops engineer with a background in government and healthcare.",
 };
 
 export default function RootLayout({
@@ -45,9 +33,7 @@ export default function RootLayout({
     <html lang="en" className="w-screen  dark" suppressHydrationWarning>
       <ReactLenis root options={lenisOptions}>
         <ThemeProvider>
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased relative w-full h-fit   `}
-          >
+          <body className={`antialiased relative w-full h-fit`}>
             <Navbar />
             <MobileNavbar />
             <ScrollToHash />

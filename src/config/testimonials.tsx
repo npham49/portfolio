@@ -1,6 +1,7 @@
 export interface Testimonial {
   name: string;
   image: string;
+  title: string;
   quote: string;
   company?: string;
 }
@@ -8,12 +9,13 @@ export interface Testimonial {
 export const testimonials = {
   items: [
     {
-      name: "Tim Cook",
+      name: " Rafael Solorzano",
       image:
-        "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3",
+        "https://booleanstrings.com/2021/10/06/linkedin-profile-seo-how-to-be-found/",
+      title: "Senior Software Engineer",
       quote:
-        "His attention to detail and innovative thinking transformed our entire approach to product design. The results speak for themselves.",
-      company: "Apple Inc.",
+        "Brian is an outstanding professional who always went above and beyond to deliver high-quality work.",
+      company: "Government of British Columbia",
     },
   ],
   title: "Kind Words",

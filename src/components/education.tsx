@@ -49,10 +49,12 @@ export function Education() {
                     />
                   </div>
                 </div>
-                
+
                 {edu.grades && edu.grades.length > 0 && (
                   <div className="mt-4 border-t border-silver/30 pt-4">
-                    <h4 className="mb-2 text-sm font-semibold">Academic Achievements</h4>
+                    <h4 className="mb-2 text-sm font-semibold">
+                      Academic Achievements
+                    </h4>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                       {edu.grades.map((grade) => (
                         <div
@@ -80,4 +82,4 @@ export function Education() {
       </div>
     </section>
   );
-} 
+}

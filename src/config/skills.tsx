@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Laptop, Monitor, Database } from "lucide-react";
+import { Building2, Heart, Laptop, Server, Users } from "lucide-react";
 
 export interface Skills {
   title: string;
@@ -15,15 +15,25 @@ export const skills = {
       icon: <Laptop />,
     },
     {
-      title: "Frontend Engineering",
-      description: "Expertise in building user-friendly interfaces",
-      icon: <Monitor />,
+      title: "DevOps",
+      description: "Experience with CI/CD pipelines and containerization",
+      icon: <Server />,
     },
     {
-      title: "Backend Architecture",
+      title: "Public Service",
       description:
-        "Strong foundation in server-side development and system design",
-      icon: <Database />,
+        "Experience with developing and delivering digital public services",
+      icon: <Building2 />,
+    },
+    {
+      title: "Healthcare",
+      description: "Experience with healthcare systems",
+      icon: <Heart />,
+    },
+    {
+      title: "Stakeholder Management",
+      description: "Experience with stakeholder management and communication",
+      icon: <Users />,
     },
   ],
   title: (
@@ -31,5 +41,5 @@ export const skills = {
       What I bring <br className="sm:hidden" /> to the table
     </span>
   ),
-  description: "Proficient in both frontend and backend development",
+  description: "Technical skills and soft skills",
 };

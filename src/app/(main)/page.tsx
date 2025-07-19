@@ -8,12 +8,12 @@ import CallToAction from "@/components/call-to-action";
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center  ">
-        <HeroSection />
-        <Skills />
-        <Experience />
-        <Education/>
-        <Testimonials/>
-        <CallToAction/>
+      <HeroSection />
+      <Skills />
+      <Experience />
+      <Education />
+      <Testimonials />
+      <CallToAction />
     </div>
   );
 }

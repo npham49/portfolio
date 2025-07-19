@@ -31,15 +31,15 @@ export default function Navbar() {
 
   // add a side effect such that on page load, and when the window is resized,  the it computes the difference in width between the left and right sections, and stores it in mainContentOffset
   useEffect(() => {
+    if (!scope.current) return;
+
     const leftSection = scope.current.querySelector("#left-section");
     const rightSection = scope.current.querySelector("#right-section");
-    setMainContentOffset(rightSection.offsetWidth - leftSection.offsetWidth);
-    console.log(
-      leftSection.offsetWidth,
-      rightSection.offsetWidth,
-      mainContentOffset
-    );
-  }, [scope]);
+
+    if (leftSection && rightSection) {
+      setMainContentOffset(rightSection.offsetWidth - leftSection.offsetWidth);
+    }
+  }, [scope, mainContentOffset]);
 
   const transitionOptions = {
     duration: 0.3,
@@ -48,6 +48,8 @@ export default function Navbar() {
 
   useEffect(() => {
     function animateCompressed() {
+      if (!scope.current) return;
+
       animate(
         scope.current,
         {
@@ -65,39 +67,47 @@ export default function Navbar() {
       );
 
       // animate the company name to disappear when the navbar is compressed
-      animate(
-        scope.current.querySelector("#companyName"),
-        {
-          display: "none",
-          width: "0",
-        },
-        {
-          ...transitionOptions,
-          duration: 0.1,
-        }
-      );
+      const companyName = scope.current.querySelector("#companyName");
+      if (companyName) {
+        animate(
+          companyName,
+          {
+            display: "none",
+            width: "0",
+          },
+          {
+            ...transitionOptions,
+            duration: 0.1,
+          }
+        );
+      }
 
       // animate the company logo to spin 360 degrees when the navbar is expanded
-      animate(
-        scope.current.querySelector("#companyLogo"),
-        {
-          transform: "rotate(360deg)",
-        },
-        {
-          ...transitionOptions,
-          type: "spring",
-          mass: 0.5,
+      const companyLogo = scope.current.querySelector("#companyLogo");
+      if (companyLogo) {
+        animate(
+          companyLogo,
+          {
+            transform: "rotate(360deg)",
+          },
+          {
+            ...transitionOptions,
+            type: "spring",
+            mass: 0.5,
 
-          duration: 0.2,
-        }
-      );
+            duration: 0.2,
+          }
+        );
+      }
     }
 
     function animateExpanded() {
+      if (!scope.current) return;
+
       animate(
         scope.current,
         {
-          backgroundColor: "transparent",
+          backgroundColor: "rgba(0, 0, 0, 0)",
           width: "100%",
         },
         {
@@ -111,22 +121,24 @@ export default function Navbar() {
       );
 
       // animate the company name to show up after the navbar is expanded
-      animate(
-        scope.current.querySelector("#companyName"),
-        {
-          display: "block",
-          width: "auto",
-        },
-        {
-          ...transitionOptions,
-          duration: 0.1,
-        }
-      );
+      const companyName = scope.current.querySelector("#companyName");
+      if (companyName) {
+        animate(
+          companyName,
+          {
+            display: "block",
+            width: "auto",
+          },
+          {
+            ...transitionOptions,
+            duration: 0.1,
+          }
+        );
+      }
     }
 
     if (isCompressed) animateCompressed();
     else animateExpanded();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCompressed]);
 
   return (

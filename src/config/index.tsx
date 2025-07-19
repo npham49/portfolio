@@ -1,9 +1,10 @@
 // Types
 import { ReactNode } from "react";
-import { projects, Project } from "./projects";
+import { projects, Experience } from "./projects";
 import { education, Education } from "./education";
 import { skills, Skills } from "./skills";
 import { testimonials, Testimonial } from "./testimonials";
+import { techStack, TechStacks } from "./tech-stack";
 
 export type SocialLink = {
   url: string;
@@ -30,9 +31,10 @@ export type Config = {
     title: string;
     subtitle: string;
     backgroundImage?: string;
+    resume?: string;
   };
   social: SocialLinks;
-  projects: Project[];
+  projects: Experience[];
   education: {
     items: Education[];
     title: string;
@@ -48,6 +50,7 @@ export type Config = {
     title: string;
     subtitle: string;
   };
+  techStack: TechStacks;
   contact: Contact;
 };
 
@@ -62,10 +65,11 @@ export const config: Config = {
   name: "Brian",
   contactEmail: "nguyenphamswork@gmail.com",
   hero: {
-    title: "Hi, I'm Brian",
+    title: "Hi, I'm Brian!",
     subtitle:
-      "I build seamless digital experiences that connect people and technology.",
+      "I have 3 years of experience in full stack development and devops engineering, with a background in government and healthcare.",
     backgroundImage: "/hero.png",
+    resume: "https://docs.google.com/document/d/1egPrrYQa2DV5VpSuwI9OgckHvKayIHWy/edit?usp=sharing&ouid=111157184374471284633&rtpof=true&sd=true",
   },
   social: {
     github: {
@@ -81,6 +85,7 @@ export const config: Config = {
   education,
   skills,
   testimonials,
+  techStack,
   contact: {
     title: "Let's Connect",
     subtitle:

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap");
 
 @plugin 'tailwindcss-animate';
 
@@ -46,7 +46,7 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  --gildaTo: rgb(0, 0, 0); 
+  --gildaTo: rgb(0, 0, 0);
   --gildaFrom: rgb(78, 78, 78);
 }
 
@@ -88,7 +88,11 @@
 }
 
 .gilda-text-bg {
-  background-image: linear-gradient(90deg, var(--gildaFrom) 0%, var(--gildaTo) 100%);
+  background-image: linear-gradient(
+    90deg,
+    var(--gildaFrom) 0%,
+    var(--gildaTo) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -107,9 +111,7 @@
 }
 
 @theme inline {
-
-  --font-gilda: 'Gilda Display', serif;
-
+  --font-gilda: "Gilda Display", serif;
 
   --radius-sm: calc(var(--radius) - 4px);
 
@@ -180,7 +182,6 @@
   --color-sidebar-border: var(--sidebar-border);
 
   --color-sidebar-ring: var(--sidebar-ring);
-
 
   --duration: 40s;
   --gap: 1rem;

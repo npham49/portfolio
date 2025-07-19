@@ -4,11 +4,10 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { config } from "@/config";
 
-
 export const metadata: Metadata = {
-  title: `${config.name} | Full Stack Developer & Machine Learning Engineer`,
+  title: `${config.name} | Full Stack Developer & DevOps Engineer`,
   description:
-    "I'm a full stack developer and machine learning engineer with a passion for building delightful software.",
+    "I'm a full stack developer and devops engineer with a background in government and healthcare.",
 };
 
 export default function RootLayout({
@@ -26,9 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="w-screen" suppressHydrationWarning>
       <ReactLenis root options={lenisOptions}>
-        <body>
-            {children}
-          </body>
+        <body>{children}</body>
       </ReactLenis>
     </html>
   );

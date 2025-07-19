@@ -10,7 +10,7 @@ export default function HeaderTitle({ children, className }: HeaderTitleProps) {
     <h2
       className={cn(
         "opacity-80 font-gilda text-6xl max-md:text-5xl gilda-text-bg ",
-        className
+        className,
       )}
     >
       {children}

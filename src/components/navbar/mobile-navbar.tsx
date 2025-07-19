@@ -25,7 +25,7 @@ export default function MobileNavbar() {
 
   const handleLinkClick = (
     e: React.MouseEvent<HTMLAnchorElement | HTMLSpanElement>,
-    callback?: () => void
+    callback?: () => void,
   ) => {
     e.preventDefault();
     setIsOpen(false);
@@ -36,13 +36,13 @@ export default function MobileNavbar() {
     <div
       className={cn(
         "top-0 fixed inset-x-0 md:hidden w-full transition-all duration-500 ease-in-out z-50",
-        hasScrolled && "bg-black bg-opacity-20 backdrop-blur-xl"
+        hasScrolled && "bg-black bg-opacity-20 backdrop-blur-xl",
       )}
     >
       <div
         className={cn(
           "flex justify-between items-center px-8 py-4 transition-all duration-500 ease-in-out",
-          !hasScrolled && "border-b"
+          !hasScrolled && "border-b",
         )}
       >
         <div className="flex items-center gap-2">
@@ -68,7 +68,7 @@ export default function MobileNavbar() {
                 <div className="flex gap-16 h-fit text-sm">
                   <motion.ul
                     className={cn(
-                      "flex flex-col gap-8 text-xl text-muted-foreground font-bold"
+                      "flex flex-col gap-8 text-xl text-muted-foreground font-bold",
                     )}
                   >
                     {links.map((link) => (

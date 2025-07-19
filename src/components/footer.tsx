@@ -11,12 +11,10 @@ export default function Footer() {
         <span className="font-xl font-bold font-gilda gilda-text-bg">
           {config.name}
         </span>
-        Vibecoded by me
         <span className="text-foreground text-xs dark:text-neutral-600">
           {" "}
           (with ❤️, ofc)
         </span>
-        <h1 className="mt-6 font-semibold text-foreground text-xl"></h1>
         <div className="flex gap-4">
           <Link
             href={config.social.github.url}
