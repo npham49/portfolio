@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { X, Shield, BarChart3 } from "lucide-react";
@@ -9,46 +9,109 @@ import { cn } from "@/lib/utils";
 export default function AnalyticsConsent() {
   const [showBanner, setShowBanner] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  
+  // Refs to store timeout IDs for cleanup
+  const showTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isMountedRef = useRef(true);
 
   useEffect(() => {
-    // Check if user has already made a choice
-    const consent = localStorage.getItem("vercel-analytics-consent");
-    if (!consent) {
-      // Show banner after a short delay for better UX
-      setTimeout(() => {
-        setShowBanner(true);
-        setIsVisible(true);
-      }, 2000);
-    }
+    isMountedRef.current = true;
+    
+    const checkConsent = () => {
+      try {
+        // Check if user has already made a choice
+        const consent = localStorage.getItem("vercel-analytics-consent");
+        if (!consent && isMountedRef.current) {
+          // Show banner after a short delay for better UX
+          showTimeoutRef.current = setTimeout(() => {
+            if (isMountedRef.current) {
+              setShowBanner(true);
+              setIsVisible(true);
+            }
+          }, 2000);
+        }
+      } catch (error) {
+        // Handle localStorage access errors (e.g., in incognito mode)
+        console.warn("Failed to access localStorage for analytics consent:", error);
+      }
+    };
+
+    checkConsent();
+
+    // Cleanup function
+    return () => {
+      isMountedRef.current = false;
+      
+      // Clear any pending timeouts
+      if (showTimeoutRef.current) {
+        clearTimeout(showTimeoutRef.current);
+        showTimeoutRef.current = null;
+      }
+      
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+        hideTimeoutRef.current = null;
+      }
+    };
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("vercel-analytics-consent", "accepted");
-    localStorage.setItem("vercel-analytics-consent-date", new Date().toISOString());
-    
-    // Enable Vercel Analytics
-    if (typeof window !== "undefined" && window.va) {
-      window.va("event", "consent_given");
+    try {
+      localStorage.setItem("vercel-analytics-consent", "accepted");
+      localStorage.setItem("vercel-analytics-consent-date", new Date().toISOString());
+      
+      // Enable Vercel Analytics with error handling
+      if (typeof window !== "undefined" && window.va && typeof window.va === "function") {
+        try {
+          window.va("event", "consent_given");
+        } catch (error) {
+          console.warn("Failed to send analytics event:", error);
+        }
+      }
+    } catch (error) {
+      console.warn("Failed to save analytics consent:", error);
     }
     
     closeBanner();
   };
 
   const handleDecline = () => {
-    localStorage.setItem("vercel-analytics-consent", "declined");
-    localStorage.setItem("vercel-analytics-consent-date", new Date().toISOString());
-    
-    // Disable Vercel Analytics
-    if (typeof window !== "undefined" && window.va) {
-      window.va = () => {}; // No-op function
+    try {
+      localStorage.setItem("vercel-analytics-consent", "declined");
+      localStorage.setItem("vercel-analytics-consent-date", new Date().toISOString());
+      
+      // Disable Vercel Analytics safely
+      if (typeof window !== "undefined" && window.va) {
+        try {
+          window.va = () => {}; // No-op function
+        } catch (error) {
+          console.warn("Failed to disable analytics:", error);
+        }
+      }
+    } catch (error) {
+      console.warn("Failed to save analytics consent:", error);
     }
     
     closeBanner();
   };
 
   const closeBanner = () => {
+    if (!isMountedRef.current) return;
+    
     setIsVisible(false);
-    setTimeout(() => setShowBanner(false), 300);
+    
+    // Clear any existing hide timeout
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+    }
+    
+    hideTimeoutRef.current = setTimeout(() => {
+      if (isMountedRef.current) {
+        setShowBanner(false);
+      }
+      hideTimeoutRef.current = null;
+    }, 300);
   };
 
   if (!showBanner) return null;

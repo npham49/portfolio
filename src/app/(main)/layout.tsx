@@ -42,9 +42,9 @@ export default function RootLayout({
             {children}
             <GoBackUp />
             <Footer />
-            {/* <AnalyticsConsent /> */}
-            {/* <AnalyticsProvider /> */}
-            <Analytics />
+            <AnalyticsConsent />
+            <AnalyticsProvider />
+            {/* <Analytics /> */}
           </body>
         </ThemeProvider>
       </ReactLenis>
