@@ -84,7 +84,7 @@ export const projects: Experience[] = [
       {
         title: "MEDIS Platform",
         subtitle: "Full Stack Developer",
-        description: "Financial reporting systems for the Ministry of Health.",
+        description: "Modernized financial reporting systems for the Ministry of Health.",
         bullets: [
           "Spearheaded development of a Vue and Express.js-based financial data extraction tool for the Ministry of Health (HLTH), automating secure data exports from data warehouses to Excel reports and eliminating 2 hours of daily data entry and validation.",
           "Built a new Vue and Express.js-based Role-Based Access Control service for Ministry of Health, where Ministry admins can assign roles for Health Authority employees across BC",
@@ -94,7 +94,7 @@ export const projects: Experience[] = [
         tags: ["Vue", "Express.js", "PostgreSQL", "Tailwind CSS", "TypeScript"],
       },
       {
-        title: "Operational Support",
+        title: "AMS Operational Support",
         subtitle: "Full Stack Developer",
         description:
           "Operational support for TypeScript and Java-based applications at the Ministry of Health.",
