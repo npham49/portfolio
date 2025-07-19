@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ReactNode } from "react";
 import { config } from "@/config";
@@ -6,7 +8,7 @@ import HeaderTitle from "./util/header-title";
 export default function Skills() {
   return (
     <section
-      className="bg-zinc-50 py-16 md:py-32 dark:bg-transparent w-full"
+      className="bg-zinc-50 py-8 md:py-32 dark:bg-transparent w-full"
       id="skills"
     >
       <div className=" mx-auto max-w-5xl px-6">

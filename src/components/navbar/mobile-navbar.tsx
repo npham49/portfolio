@@ -5,10 +5,11 @@ import { Drawer, DrawerContent, DrawerTitle } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
 import { useTheme } from "@/providers/theme-context";
 import { motion } from "framer-motion";
-import { Link, Menu, Moon, Phone, Sun, X } from "lucide-react";
+import { Menu, Moon, Phone, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { links } from "./links";
 import { config } from "@/config";
+import Link from "next/link";
 export default function MobileNavbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +48,6 @@ export default function MobileNavbar() {
       >
         <div className="flex items-center gap-4">
           <Link href={"/"}>
-            {" "}
             <motion.span className={cn(hasScrolled && "")} id="companyName">
               <motion.span className="font-bold not-italic">
                 {config.fullName}
