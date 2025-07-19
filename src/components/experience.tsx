@@ -96,7 +96,7 @@ export const Experience = () => {
 
       {/* Project Details Dialog */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className={"lg:max-w-screen-lg overflow-y-scroll max-h-screen"}>
           {selectedProject && (
             <>
               <DialogHeader>
