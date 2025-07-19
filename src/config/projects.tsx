@@ -95,11 +95,17 @@ export const projects: Experience[] = [
       },
       {
         title: "AMS Operational Support",
-        subtitle: "Full Stack Developer",
+        subtitle: "Platform Developer",
         description:
           "Operational support for TypeScript and Java-based applications at the Ministry of Health.",
         bullets: [
-          "Handled operational support for HLTH’s OpenShift and AWS-based applications, ensuring SLA compliance with a 99.98% uptime",
+          "Handled operational support for HLTH’s OpenShift and AWS-based applications, ensuring SLA compliance with a 98.9% uptime",
+          "Orchestrated Node.js applications deployment on Kubernetes (OpenShift), wrote multi-stage Dockerfiles to reduce image size",
+          "Implemented Horizontal Pod Autoscaler (HPA), configured Routes, Services, Network Policies, ConfigMaps, Secrets, and Deployments on OpenShift",
+          "Configured Hashicorp Vault for secure secrets management",
+          "Wrote Helm charts for applications",
+          "Deployed and configured Patroni clusters for PostgreSQL databases, ensuring high availability and data consistency",
+          "Deployed and configured MinIO object storage for S3 compatible storage",
           "Designed and implemented CI/CD pipelines, utilizing GitHub Actions and Docker to build and deploy Node.js applications to a Kubernetes platform (OpenShift)",
           "Implemented monitoring and alerts with Sysdig",
         ],
@@ -118,6 +124,7 @@ export const projects: Experience[] = [
         description: "Web-based test automation for the Ministry of Social Development and Poverty Reduction.",
         bullets: [
           "Developed and maintained a web-based test automation platform using Playwright, TypeScript, and Node.js, enabling automated testing of Ministry applications",
+          "Maintained Helm charts for the platform, ensuring smooth deployment and updates",
           "Implemented CI pipelines with Jenkins to automate regression testing processes",
         ],
         tags: ["Playwright", "TypeScript", "Node.js", "Jenkins"],

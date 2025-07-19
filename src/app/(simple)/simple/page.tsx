@@ -58,8 +58,8 @@ export default function SimplePage() {
         </Link>
         <h1 className="text-4xl font-bold mb-4">{config.hero.title}</h1>
         <p className="text-xl text-gray-600">
-          I&apos;m a full stack developer and devops engineer with a background
-          in government and healthcare.
+          I&apos;m a full stack developer with a background in government and
+          healthcare.
         </p>
         <Link
           href={config.hero.resume || ""}

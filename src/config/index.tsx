@@ -69,7 +69,7 @@ export const config: Config = {
   hero: {
     title: "Hi, I'm Brian!",
     subtitle:
-      "I have 3 years of experience in full stack development and devops engineering, with a background in government and healthcare.",
+      "I have 3 years of experience in full stack development (and a bit of devops), with a strong background in govtech and healthcare.",
     backgroundImage: "/hero.png",
     resume: "https://docs.google.com/document/d/1egPrrYQa2DV5VpSuwI9OgckHvKayIHWy/edit?usp=sharing&ouid=111157184374471284633&rtpof=true&sd=true",
   },

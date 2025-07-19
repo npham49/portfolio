@@ -5,9 +5,9 @@ import "../globals.css";
 import { config } from "@/config";
 
 export const metadata: Metadata = {
-  title: `${config.name} | Full Stack Developer & DevOps Engineer`,
+  title: `${config.name} | Full Stack Developer`,
   description:
-    "I'm a full stack developer and devops engineer with a background in government and healthcare.",
+    "I'm a full stack developer with a background in government and healthcare.",
 };
 
 export default function RootLayout({
