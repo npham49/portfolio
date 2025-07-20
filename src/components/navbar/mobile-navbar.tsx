@@ -92,9 +92,11 @@ export default function MobileNavbar() {
                 </div>
 
                 <div className="flex flex-col justify-center gap-4 mt-8 w-full">
-                  <Button className="rounded-full max-w-[300px]">
-                    Book a Call <Phone className="size-4" />
-                  </Button>
+                  <Link href={`mailto:${config.contactEmail}`}>
+                    <Button className="rounded-full max-w-[300px]">
+                      Contact me! <Phone className="size-4" />
+                    </Button>
+                  </Link>
 
                   <span
                     className="bg-transparent w-fit text-foreground text-xs"
