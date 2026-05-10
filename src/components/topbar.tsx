@@ -9,12 +9,30 @@ const NAV_LINKS = [
   { n: "05", t: "contact", h: "#contact" },
 ];
 
+const THEMES = ["dark", "paper", "terminal"] as const;
+type Theme = typeof THEMES[number];
+
+const THEME_LABELS: Record<Theme, string> = {
+  dark: "●",
+  paper: "○",
+  terminal: "◈",
+};
+
 export default function Topbar({ onCmd }: { onCmd: () => void }) {
   const [isMac, setIsMac] = useState(true);
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     setIsMac(/Mac|iPhone|iPad/.test(navigator.platform));
+    const current = (document.documentElement.getAttribute("data-theme") ?? "dark") as Theme;
+    setTheme(current);
   }, []);
+
+  const cycleTheme = () => {
+    const next = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+    document.documentElement.setAttribute("data-theme", next);
+    setTheme(next);
+  };
 
   return (
     <div className="top">
@@ -36,10 +54,13 @@ export default function Topbar({ onCmd }: { onCmd: () => void }) {
         </nav>
 
         <div className="top-right">
-          <span className="status">
-            <span className="status-dot" />
-            open to roles
-          </span>
+          <button
+            className="kbd-hint"
+            onClick={cycleTheme}
+            title={`theme: ${theme}`}
+          >
+            {THEME_LABELS[theme]} {theme}
+          </button>
           <button className="kbd-hint" onClick={onCmd}>
             <kbd>{isMac ? "⌘" : "ctrl"}</kbd>
             <kbd>K</kbd>

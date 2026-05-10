@@ -5,7 +5,7 @@ import { config } from "@/config";
 const BOOT_SEQ = [
   { t: 100, l: <span><span className="tp">$</span> <span className="tc">whoami</span></span> },
   { t: 200, l: <span className="tr">brian.pham — full-stack engineer</span> },
-  { t: 100, l: <span className="tr">→ 3y exp · govtech + healthcare · victoria, BC</span> },
+  { t: 100, l: <span className="tr">→ 5y exp · govtech + healthcare · victoria, BC</span> },
   { t: 250, l: <span><span className="tp">$</span> <span className="tc">cat now.txt</span></span> },
   { t: 200, l: <span className="tr">{"// shipping RBAC for BC ministries"}</span> },
   { t: 100, l: <span className="tr">{"// running patroni clusters in production"}</span> },
@@ -149,7 +149,7 @@ export default function HeroSection() {
             <span>
               <b>Victoria, BC</b> · PT-8
             </span>
-            <span>3 yrs exp</span>
+            <span>5 yrs exp</span>
             <span>
               open to <b>remote / hybrid</b>
             </span>

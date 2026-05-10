@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: `${config.name} | Full Stack Engineer`,
   description:
-    "Full-stack engineer with a background in govtech and healthcare. 3 years building digital public services across the BC government.",
+    "Full-stack engineer with a background in govtech and healthcare. 5 years building digital public services across the BC government.",
 };
 
 export default function RootLayout({
