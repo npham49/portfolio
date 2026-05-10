@@ -1,10 +1,10 @@
-import { techStack } from "@/config/tech-stack";
+import { config } from "@/config";
 import HeaderTitle from "./util/header-title";
 import Image from "next/image";
 import { Marquee } from "@/components/magicui/marquee";
 
 export default function TechStack() {
-  const { items, title } = techStack;
+  const { items, title } = config.techStack;
   return (
     <section className="bg-background pt-16 pb-6 w-full">
       <div className="max-w-6xl mx-auto px-4">

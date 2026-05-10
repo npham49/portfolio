@@ -1,176 +1,167 @@
-import React from "react";
-import Link from "next/link";
-import { ArrowRight, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-
-import { AnimatedGroup } from "./ui/animated-group";
-import { TextEffect } from "./ui/text-effect";
+"use client";
+import { useState, useEffect, useRef, FormEvent, ReactNode } from "react";
 import { config } from "@/config";
-import TechStack from "./tech-stack";
 
-const transitionVariants = {
-  item: {
-    hidden: {
-      opacity: 0,
-      filter: "blur(12px)",
-      y: 12,
-    },
-    visible: {
-      opacity: 1,
-      filter: "blur(0px)",
-      y: 0,
-      transition: {
-        type: "spring",
-        bounce: 0.3,
-        duration: 1.5,
-      },
-    },
-  },
-};
+const BOOT_SEQ = [
+  { t: 100, l: <span><span className="tp">$</span> <span className="tc">whoami</span></span> },
+  { t: 200, l: <span className="tr">brian.pham — full-stack engineer</span> },
+  { t: 100, l: <span className="tr">→ 3y exp · govtech + healthcare · victoria, BC</span> },
+  { t: 250, l: <span><span className="tp">$</span> <span className="tc">cat now.txt</span></span> },
+  { t: 200, l: <span className="tr">{"// shipping RBAC for BC ministries"}</span> },
+  { t: 100, l: <span className="tr">{"// running patroni clusters in production"}</span> },
+  { t: 100, l: <span className="tr">{"// side-quest: indie SaaS"}</span> },
+  { t: 250, l: <span><span className="tp">$</span> <span className="tc">ls projects | grep --recent</span></span> },
+  { t: 200, l: <span className="tr">medis-platform/   ams-ops/   wage-subsidy/   evault/</span> },
+  { t: 250, l: <span><span className="tp">$</span> <span className="tc">_</span></span> },
+];
+
+function Terminal() {
+  const [lines, setLines] = useState<ReactNode[]>([]);
+  const [cmd, setCmd] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    let dead = false;
+    let idx = 0;
+    const next = () => {
+      if (dead || idx >= BOOT_SEQ.length) return;
+      const s = BOOT_SEQ[idx++];
+      setTimeout(() => {
+        if (dead) return;
+        setLines((prev) => [...prev, s.l]);
+        next();
+      }, s.t);
+    };
+    next();
+    return () => { dead = true; };
+  }, []);
+
+  const run = (e: FormEvent) => {
+    e.preventDefault();
+    const c = cmd.trim().toLowerCase();
+    let out: ReactNode;
+
+    if (c === "help" || c === "?") {
+      out = <span className="tr">commands: help · about · contact · gh · li · resume · clear</span>;
+    } else if (c === "about") {
+      out = <span className="tr">{config.fullName} · full-stack engineer · Victoria, BC</span>;
+    } else if (c === "contact" || c === "email") {
+      out = <span className="tr">→ {config.contactEmail}</span>;
+      window.location.href = `mailto:${config.contactEmail}`;
+    } else if (c === "gh" || c === "github") {
+      out = <span className="tr">→ opening github…</span>;
+      window.open(config.social.github.url, "_blank");
+    } else if (c === "li" || c === "linkedin") {
+      out = <span className="tr">→ opening linkedin…</span>;
+      window.open(config.social.linkedin.url, "_blank");
+    } else if (c === "resume" || c === "cv") {
+      out = <span className="tr">→ opening resume…</span>;
+      window.open(config.hero.resume ?? "#", "_blank");
+    } else if (c === "clear") {
+      setLines([]);
+      setCmd("");
+      return;
+    } else if (!c) {
+      return;
+    } else {
+      out = <span className="tr">command not found: {c} — try `help`</span>;
+    }
+
+    setLines((prev) => [
+      ...prev,
+      <span key={`cmd-${Date.now()}`}><span className="tp">$</span> <span className="tc">{c}</span></span>,
+      out,
+    ]);
+    setCmd("");
+  };
+
+  return (
+    <div className="term rv" onClick={() => inputRef.current?.focus()}>
+      <div className="term-head">
+        <div className="term-dots">
+          <i /><i /><i />
+        </div>
+        <div>~/brian — zsh — 80×24</div>
+        <div>●</div>
+      </div>
+      <div className="term-body">
+        {lines.map((l, i) => (
+          <div key={i} className="term-line">{l}</div>
+        ))}
+        <form onSubmit={run} className="term-prompt">
+          <span className="tp">$</span>
+          <input
+            ref={inputRef}
+            className="term-input"
+            value={cmd}
+            onChange={(e) => setCmd(e.target.value)}
+            placeholder="type 'help'"
+            autoComplete="off"
+            spellCheck={false}
+          />
+        </form>
+      </div>
+    </div>
+  );
+}
 
 export default function HeroSection() {
+  const year = new Date().getFullYear();
+
   return (
-    <>
-      <main className="overflow-hidden">
-        <div
-          aria-hidden
-          className="opacity-65 contain-strict lg:block"
-        >
-          <div className="w-140 h-320 -translate-y-87.5 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
-          <div className="h-320 absolute left-0 top-0 w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
-          <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
-        </div>
-        <section>
-          <div className="relative pt-24 md:pt-36">
-            <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"></div>
-            <div className="mx-auto max-w-7xl px-6">
-              <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
-                {/* <AnimatedGroup variants={transitionVariants}>
-                  <Link
-                    href="https://apple.com"
-                    className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
-                  >
-                    <span className="text-foreground text-sm">
-                      Checkout my latest project
-                    </span>
-                    <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
-
-                    <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
-                      <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
-                        <span className="flex size-6">
-                          <ArrowRight className="m-auto size-3" />
-                        </span>
-                        <span className="flex size-6">
-                          <ArrowRight className="m-auto size-3" />
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                </AnimatedGroup> */}
-
-                <TextEffect
-                  preset="fade-in-blur"
-                  speedSegment={0.3}
-                  as="h1"
-                  className="mt-8 text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]"
-                >
-                  {config.hero.title}
-                </TextEffect>
-                <TextEffect
-                  per="line"
-                  preset="fade-in-blur"
-                  speedSegment={0.3}
-                  delay={0.5}
-                  as="p"
-                  className="mx-auto mt-8 max-w-2xl text-balance text-lg"
-                >
-                  {config.hero.subtitle}
-                </TextEffect>
-
-                <AnimatedGroup
-                  variants={{
-                    container: {
-                      visible: {
-                        transition: {
-                          staggerChildren: 0.05,
-                          delayChildren: 0.75,
-                        },
-                      },
-                    },
-                    ...transitionVariants,
-                  }}
-                  className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
-                >
-                  <div
-                    key={1}
-                    className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5"
-                  >
-                    <Button
-                      asChild
-                      size="lg"
-                      className="rounded-xl px-5 text-base"
-                    >
-                      <Link href={config.hero.resume || ""} target="_blank">
-                        <span className="text-nowrap">Get Resume</span>
-                      </Link>
-                    </Button>
-                  </div>
-                  <Button
-                    key={2}
-                    asChild
-                    size="lg"
-                    variant="ghost"
-                    className="h-10.5 rounded-xl px-5"
-                  >
-                    <Link href="#contact">
-                      <span className="text-nowrap">Reach out</span>
-                    </Link>
-                  </Button>
-                </AnimatedGroup>
-              </div>
-            </div>
-
-            <AnimatedGroup
-              variants={{
-                container: {
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.05,
-                      delayChildren: 0.75,
-                    },
-                  },
-                },
-                ...transitionVariants,
-              }}
-            >
-              <div className="relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20">
-                <div
-                  aria-hidden
-                  className="bg-linear-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
-                />
-                <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
-                  <Image
-                    className="bg-background aspect-15/8 relative hidden rounded-2xl object-cover  dark:block"
-                    src={config.hero.backgroundImage || ""}
-                    alt="app screen"
-                    width="2700"
-                    height="1440"
-                  />
-                  <Image
-                    className="z-2 border-border/25 aspect-15/8 relative rounded-2xl object-cover  border dark:hidden"
-                    src={config.hero.backgroundImage || ""}
-                    alt="app screen"
-                    width="2700"
-                    height="1440"
-                  />
-                </div>
-              </div>
-            </AnimatedGroup>
+    <section className="hero wrap" id="top">
+      <div className="hero-grid">
+        {/* Left column */}
+        <div className="rv in">
+          <div className="hero-eyebrow">
+            [01] / portfolio · v3 · {year}
           </div>
-        </section>
-        <TechStack />
-      </main>
-    </>
+          <h1>
+            full-stack<br />
+            engineer<span className="slash">.</span><br />
+            <span style={{ color: "var(--dim)" }}>govtech / healthcare</span>
+          </h1>
+          <p className="sub">
+            {config.hero.subtitle}
+          </p>
+          <div className="ctas">
+            <a className="btn acc" href={`mailto:${config.contactEmail}`}>
+              get in touch →
+            </a>
+            <a
+              className="btn"
+              href={config.hero.resume ?? "#"}
+              target="_blank"
+              rel="noreferrer"
+            >
+              resume.pdf
+            </a>
+            <a
+              className="btn"
+              href={config.social.github.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              github
+            </a>
+          </div>
+          <div className="meta">
+            <span>
+              <b>Victoria, BC</b> · PT-8
+            </span>
+            <span>3 yrs exp</span>
+            <span>
+              open to <b>remote / hybrid</b>
+            </span>
+            <span>
+              <b>{config.fullName}</b>
+            </span>
+          </div>
+        </div>
+
+        {/* Right column — terminal */}
+        <Terminal />
+      </div>
+    </section>
   );
 }

@@ -4,10 +4,10 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "@/providers/theme-context";
 
 import { motion, useAnimate } from "framer-motion";
-import { MailIcon, MoonIcon, SunIcon } from "lucide-react";
+import { MailIcon, MoonIcon, SunIcon, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { SiGithub, SiLinkedin } from "react-icons/si";
+import { SiGithub } from "react-icons/si";
 import { links } from "./links";
 import { config } from "@/config";
 import { getContactLink } from "../util/get-contact-link";
@@ -221,7 +221,7 @@ export default function Navbar() {
                   target="_blank"
                   aria-label={config.social.linkedin.ariaLabel}
                 >
-                  <SiLinkedin className="hover:text-blue-400 transition-colors size-5" />
+                  <Linkedin className="hover:text-blue-400 transition-colors size-5" />
                 </Link>
               </div>
               <button onClick={toggleTheme}>

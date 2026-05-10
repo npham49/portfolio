@@ -1,4 +1,4 @@
-import { Experience, Project } from "@/config/projects";
+import { Experience, Project } from "@/config";
 import { User, Briefcase, Code } from "lucide-react";
 import { getTypeColor } from "@/lib/utils";
 

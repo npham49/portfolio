@@ -1,4 +1,4 @@
-import { Experience } from "@/config/projects";
+import { Experience } from "@/config";
 import { Building, Calendar, ChevronDown, ChevronUp } from "lucide-react";
 import { getTypeColor } from "@/lib/utils";
 import { useState } from "react";

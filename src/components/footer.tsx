@@ -1,6 +1,7 @@
 "use client";
 
-import { SiGithub, SiLinkedin } from "react-icons/si";
+import { SiGithub } from "react-icons/si";
+import { Linkedin } from "lucide-react";
 import Link from "next/link";
 import { config } from "@/config";
 
@@ -28,7 +29,7 @@ export default function Footer() {
             target="_blank"
             aria-label={config.social.linkedin.ariaLabel}
           >
-            <SiLinkedin className="hover:text-blue-400 transition-colors size-5" />
+            <Linkedin className="hover:text-blue-400 transition-colors size-5" />
           </Link>
         </div>
       </div>
